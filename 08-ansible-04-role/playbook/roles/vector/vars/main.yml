@@ -1,0 +1,4 @@
+---
+# vars file for role-vector
+lighthouse_dir: "/opt/lighthouse"
+lighthouse_log_name: "test"

@@ -1,0 +1,16 @@
+
+- name: Lighthouse | install dependencies
+  ansible.builtin.yum:
+    name: git
+    state: present
+- name: Lighthouse | Copy from git
+  ansible.builtin.git:
+    repo: "{{ lighthouse_repo }}"
+    dest: "{{ lighthouse_dir }}"
+    version: master
+- name: Lighthouse | Create lighthouse config
+  ansible.builtin.template:
+    src: "template/lighthouse.conf.j2"
+    dest: /etc/nginx/conf.d/lighthouse.conf
+    mode: "0644"
+  notify: Restart-nginx service

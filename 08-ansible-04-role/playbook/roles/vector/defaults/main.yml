@@ -1,0 +1,6 @@
+---
+# defaults file for role-vector
+vector_version: 0.31.0
+vector_config_dir: "{{ ansible_user_dir }}/vector_config"
+vector_config:
+lighthouse_repo: "https://github.com/VKCOM/lighthouse.git"
