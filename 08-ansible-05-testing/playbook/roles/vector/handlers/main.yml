@@ -1,0 +1,7 @@
+---
+# handlers file for role-vector
+- name: Start vector
+  ansible.builtin.service:
+    name: vector
+    state: restarted
+  when: ansible_service_mgr == "systemd" and ansible_facts.virtualization_type != "docker"

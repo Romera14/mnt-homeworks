@@ -1,0 +1,7 @@
+---
+# vars file for role-vector
+lighthouse_dir: "/opt/lighthouse"
+lighthouse_log_name: "test"
+vector_version: 0.31.0
+vector_config_dir: "{{ ansible_user_dir }}/vector_config"
+vector_config:
