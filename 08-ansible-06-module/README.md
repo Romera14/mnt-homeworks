@@ -161,11 +161,36 @@ if __name__ == '__main__':
 **Шаг 3.** Заполните файл в соответствии с требованиями Ansible так, чтобы он выполнял основную задачу: module должен создавать текстовый файл на удалённом хосте по пути, определённом в параметре `path`, с содержимым, определённым в параметре `content`.
 
 **Шаг 4.** Проверьте module на исполняемость локально.
+```
+(venv) paromov@debian11:~/ansible$ python -m ansible.modules.my_own_module test.json -vv
+
+{"changed": true, "invocation": {"module_args": {"content": "traley-valey", "path": "./", "file_name": "test_ansible"}}}
+```
 
 **Шаг 5.** Напишите single task playbook и используйте module в нём.
 
 **Шаг 6.** Проверьте через playbook на идемпотентность.
+```
+(venv) paromov@debian11:~/ansible$ ansible-playbook -i localhost site.yml
+[WARNING]: You are running the development version of Ansible. You should only run Ansible from
+"devel" if you are modifying the Ansible engine, or trying out features under development. This is a
+rapidly changing source of code and can become unstable at any point.
+[WARNING]: Unable to parse /home/paromov/ansible/localhost as an inventory source
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit
+localhost does not match 'all'
 
+PLAY [test module] **********************************************************************************
+
+TASK [Gathering Facts] ******************************************************************************
+ok: [localhost]
+
+TASK [Test module] **********************************************************************************
+changed: [localhost]
+
+PLAY RECAP ******************************************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+```
 **Шаг 7.** Выйдите из виртуального окружения.
 
 **Шаг 8.** Инициализируйте новую collection: `ansible-galaxy collection init my_own_namespace.yandex_cloud_elk`.
