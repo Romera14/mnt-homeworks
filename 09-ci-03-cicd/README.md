@@ -60,6 +60,7 @@
 2. Запустите команду `mvn package` в директории с `pom.xml`, ожидайте успешного окончания.
 3. Проверьте директорию `~/.m2/repository/`, найдите ваш артефакт.
 4. В ответе пришлите исправленный файл `pom.xml`.
+https://github.com/Romera14/mnt-homeworks/blob/MNT-video/09-ci-03-cicd/mvn/pom.xml
 
 ---
 
